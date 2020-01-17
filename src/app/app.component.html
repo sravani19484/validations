@@ -1,0 +1,66 @@
+<div class="card m-3">
+  <h5 class="card-header">Angular 8 Reactive Form Validation</h5>
+  <div class="card-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group ">
+          <label>First Name</label>
+          <input type="text" formControlName="firstName" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+          <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+            <div *ngIf="f.firstName.errors.pattern">Firstname must be started with Alphabets only</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group ">
+          <label>Last Name</label>
+          <input type="text" formControlName="lastName" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+          <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+            <div *ngIf="f.lastName.errors.pattern">Firstname must be started with Alphabets only</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" formControlName="email" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group ">
+          <label>PhoneNumber</label>
+          <input type="text" formControlName="num" class="form-control" maxlength="10"
+            [ngClass]="{ 'is-invalid': submitted && f.num.errors }" />
+          <div *ngIf="submitted && f.num.errors" class="invalid-feedback">
+            <div *ngIf="f.num.errors.required">PhoneNumber is required</div>
+            <div *ngIf="f.num.errors.maxlength">PhoneNumber must be at least 10 characters</div>
+            <div *ngIf="f.num.errors.pattern">PhoneNumber must be started with 7,8,9 digits only</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group ">
+          <label>DOB</label>
+          <input type="date" formControlName="date" class="form-control" max={{datedata}}
+            [ngClass]="{ 'is-invalid': submitted && f.date.errors }" />
+          <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+            <div *ngIf="f.date.errors.required">PhoneNumber is required</div>
+            <div *ngIf="f.date.errors.pattern">PhoneNumber must be started with 7,8,9 digits only</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-primary mr-1">Register</button>
+      </div>
+    </form>
+  </div>
+</div>
